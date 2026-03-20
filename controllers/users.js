@@ -40,7 +40,9 @@ const createUser = async (req, res) => {
         lastName: req.body.lastName,
         email: req.body.email,
         favoriteColor: req.body.favoriteColor,
-        birthday: req.body.birthday
+        birthday: req.body.birthday,
+        username: req.body.username,
+        phoneNumber: req.body.phoneNumber
     };
     const response = await mongodb.getDatabase().db().collection('users').insertOne(user);
     if (response.acknowledged) {
@@ -52,28 +54,53 @@ const createUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
     //#swagger.tags = ['Users']
-    const userId = new ObjectId(req.params.id);
-    const user = {
-        username: req.body.username,
-        email: req.body.email,
-        ipaddress: req.body.ipaddress
-    };
-    const response = await mongodb.getDatabase().db().collection('users').replaceOne({ _id: userId }, user);
-    if (response.modifiedCount > 0) {
-        res.status(204).send();
-    } else {
-        res.status(500).json(response.error || 'Some error occurred while updating the user.');
+    try {
+        if (!ObjectId.isValid(req.params.id)) {
+            return res.status(400).json('Error! you must use a valid user id to update a user.');
+        }
+        const userId = new ObjectId(req.params.id);
+
+        const user = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            favoriteColor: req.body.favoriteColor,
+            birthday: req.body.birthday,
+            username: req.body.username,
+            phoneNumber: req.body.phoneNumber
+        };
+
+        const response = await mongodb
+            .getDatabase()
+            .db()
+            .collection('users')
+            .replaceOne({ _id: userId }, user);
+
+        if (response.modifiedCount > 0) {
+            res.status(204).send();
+        } else {
+            res.status(404).json('User not found or no changes made.');
+        }
+    } catch (err) {
+        res.status(500).json({ error: err.message || 'Some error occurred while updating the user.' });
     }
 };
 
 const deleteUser = async (req, res) => {
-    //#swagger.tags = ['Users']
-    const userId = new ObjectId(req.params.id);
-    const response = await mongodb.getDatabase().db().collection('users').deleteOne({ _id: userId });
-    if (response.deletedCount > 0) {
-        res.status(204).send();
-    } else {
-        res.status(500).json(response.error || 'Some error occurred while deleting the user.');
+    try {
+        if (!ObjectId.isValid(req.params.id)) {
+            return res.status(400).json('Error! you must use a valid user id to delete a user.');
+        }
+        const userId = new ObjectId(req.params.id);
+        const response = await mongodb.getDatabase().db().collection('users').deleteOne({ _id: userId });
+
+        if (response.deletedCount > 0) {
+            res.status(204).send();
+        } else {
+            res.status(404).json('User not found.');
+        }
+    } catch (err) {
+        res.status(500).json({ error: err.message || 'Some error occurred while deleting the user check and try again.' });
     }
 };
 

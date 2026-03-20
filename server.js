@@ -1,11 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongodb = require('./data/database');
+const errorHandler = require('./middleware/errorHandler');
 const app = express();
 
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
+app.use(errorHandler);
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers',

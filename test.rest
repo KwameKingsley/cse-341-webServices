@@ -2,29 +2,54 @@
 GET http://localhost:3000/users
 
 ### Get contact by id
-GET http://localhost:3000/users/59b99db4cfa9a34dcd7885b6
+GET http://localhost:3000/users/69b73b220789845ac718ddf2
 
 ### Create contact
 POST http://localhost:3000/users HTTP/1.1
 content-type: application/json
 
 {
-    "firstName":"Ashley",
-    "lastName":"Weaver",
-    "email":"aWeaver@test.com",
-    "favoriteColor":"Brown",
-    "birthday":"06/19/2000"
+    "firstName":"Kofi",
+    "lastName":"Kwame",
+    "email":"kofi.king@test.com",
+    "favoriteColor":"Red",
+    "birthday":"1995-05-15",
+    "username":"kofi123",   
+    "phoneNumber":"123-456-7890"
 }
 
 ### Update contact
-PUT http://localhost:3000/users/59b99db4cfa9a34dcd7885b6 HTTP/1.1
+PUT http://localhost:3000/users/69add7e4a121d4a4c71ee5ed HTTP/1.1
 content-type: application/json
 
 {
-  "username": "Ned Stark",
-  "email": "sean_bean@gameofthron.es",
-  "ipaddress": "192.168.1.1"
+    "firstName": "Ama",
+    "lastName": "Darko",
+    "email": "ama.darko@test.com",
+    "favoriteColor": "Green",
+    "birthday": "1990-01-01",
+    "username": "amadarko",
+    "phoneNumber": "123-765-7890"
+
 }
 
 ### Delete contact
-DELETE http://localhost:3000/users/69adb0b5a3249050c7a5031b HTTP/1.1
+DELETE http://localhost:3000/users/ObjectId HTTP/1.1
+
+
+#### Get all tasks
+GET http://localhost:3000/tasks
+
+### Create a new task (Valid)
+POST http://localhost:3000/tasks
+Content-Type: application/json
+
+{
+    "title": "Assignment",
+    "description": "Update an existing task.",
+    "priority": "High",
+    "dueDate": "2026-12-31",
+    "assignedTo": "Samuel Kofi",
+    "status": "In Progress",
+    "category": "School"
+}
