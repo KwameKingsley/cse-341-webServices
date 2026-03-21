@@ -25,7 +25,7 @@ const saveUser = (req, res, next) => {
 
     if (error) {
         const errorMessages = error.details.map((detail) => detail.message);
-        return res.status(422).json({
+        return res.status(400).json({
             success: false,
             errors: errorMessages
         });

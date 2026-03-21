@@ -1,18 +1,18 @@
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
-const getAll = async (req, res) => {
+const getAll = async (req, res, next) => {
     //#swagger.tags = ['Tasks']
     try {
         const result = await mongodb.getDatabase().db().collection('tasks').find();
         const tasks = await result.toArray();
         res.status(200).json(tasks);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        next(err);
     }
 };
 
-const getSingle = async (req, res) => {
+const getSingle = async (req, res, next) => {
     //#swagger.tags = ['Tasks']
     try {
         if (!ObjectId.isValid(req.params.id)) {

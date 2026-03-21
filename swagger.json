@@ -94,8 +94,8 @@
           "201": {
             "description": "Created"
           },
-          "422": {
-            "description": "Unprocessable Entity"
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -185,9 +185,6 @@
           "404": {
             "description": "Not Found"
           },
-          "422": {
-            "description": "Unprocessable Entity"
-          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -231,9 +228,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
