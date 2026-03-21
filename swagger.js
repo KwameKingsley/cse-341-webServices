@@ -5,8 +5,8 @@ const doc = {
         title: 'Users API',
         description: 'Users API for CSE 341 Web Services'
     },
-    host: 'github.com/KwameKingsley/cse-341-webServices',
-    schemes: ['https']
+    host: 'KwameKingsley/cse-341-webServices',
+    schemes: ['https', 'http']
 };
 
 const outputFile = './swagger.json';
