@@ -2,6 +2,7 @@ const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res) => {
+    //#swagger.tags = ['Tasks']
     try {
         const result = await mongodb.getDatabase().db().collection('tasks').find();
         const tasks = await result.toArray();
@@ -12,6 +13,7 @@ const getAll = async (req, res) => {
 };
 
 const getSingle = async (req, res) => {
+    //#swagger.tags = ['Tasks']
     try {
         if (!ObjectId.isValid(req.params.id)) {
             return res.status(400).json('Invalid ID format.');
@@ -30,6 +32,7 @@ const getSingle = async (req, res) => {
 };
 
 const createTask = async (req, res) => {
+    //#swagger.tags = ['Tasks']
     try {
         const task = {
             title: req.body.title,
@@ -52,6 +55,7 @@ const createTask = async (req, res) => {
 };
 
 const updateTask = async (req, res) => {
+    //#swagger.tags = ['Tasks']
     try {
         if (!ObjectId.isValid(req.params.id)) {
             return res.status(400).json('Invalid ID format.');
@@ -78,6 +82,7 @@ const updateTask = async (req, res) => {
 };
 
 const deleteTask = async (req, res) => {
+    //#swagger.tags = ['Tasks']
     try {
         if (!ObjectId.isValid(req.params.id)) {
             return res.status(400).json('Invalid ID format.');

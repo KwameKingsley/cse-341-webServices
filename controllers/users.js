@@ -87,6 +87,7 @@ const updateUser = async (req, res) => {
 };
 
 const deleteUser = async (req, res) => {
+    //#swagger.tags = ['Users']
     try {
         if (!ObjectId.isValid(req.params.id)) {
             return res.status(400).json('Error! you must use a valid user id to delete a user.');
