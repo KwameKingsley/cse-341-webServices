@@ -193,6 +193,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "parameters": [
           {
@@ -220,6 +223,9 @@
     },
     "/tasks/": {
       "get": {
+        "tags": [
+          "Tasks"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -231,6 +237,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Tasks"
+        ],
         "description": "",
         "parameters": [
           {
@@ -279,6 +288,9 @@
     },
     "/tasks/{id}": {
       "get": {
+        "tags": [
+          "Tasks"
+        ],
         "description": "",
         "parameters": [
           {
@@ -304,6 +316,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Tasks"
+        ],
         "description": "",
         "parameters": [
           {
@@ -359,6 +374,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Tasks"
+        ],
         "description": "",
         "parameters": [
           {
