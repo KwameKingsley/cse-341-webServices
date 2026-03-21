@@ -5,7 +5,7 @@
     "description": "Users API for CSE 341 Web Services",
     "version": "1.0.0"
   },
-  "host": "https://github.com/KwameKingsley/cse-341-webServices",
+  "host": "github.com/KwameKingsley/cse-341-webServices",
   "basePath": "/",
   "schemes": [
     "https"
