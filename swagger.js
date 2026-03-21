@@ -5,7 +5,7 @@ const doc = {
         title: 'Users API',
         description: 'Users API for CSE 341 Web Services'
     },
-    host: 'KwameKingsley/cse-341-webServices',
+    host: 'cse-341-webservices-vmvc.onrender.com',
     schemes: ['https', 'http']
 };
 
