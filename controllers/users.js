@@ -35,20 +35,24 @@ const getSingle = async (req, res) => {
 
 const createUser = async (req, res) => {
     //#swagger.tags = ['Users']
-    const user = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        favoriteColor: req.body.favoriteColor,
-        birthday: req.body.birthday,
-        username: req.body.username,
-        phoneNumber: req.body.phoneNumber
-    };
-    const response = await mongodb.getDatabase().db().collection('users').insertOne(user);
-    if (response.acknowledged) {
-        res.status(201).send();
-    } else {
-        res.status(500).json(response.error || 'Some error occurred while creating the user.');
+    try { // Added try
+        const user = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            favoriteColor: req.body.favoriteColor,
+            birthday: req.body.birthday,
+            username: req.body.username,
+            phoneNumber: req.body.phoneNumber
+        };
+        const response = await mongodb.getDatabase().db().collection('users').insertOne(user);
+        if (response.acknowledged) {
+            res.status(201).send();
+        } else {
+            res.status(500).json('Some error occurred while creating the user.');
+        }
+    } catch (err) { // Added catch
+        res.status(500).json({ message: err.message || 'Some error occurred while creating the user.' });
     }
 };
 

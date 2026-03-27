@@ -6,7 +6,7 @@ const doc = {
         description: 'Users API for CSE 341 Web Services'
     },
     host: 'cse-341-webservices-vmvc.onrender.com',
-    schemes: ['https', 'http']
+    schemes: ['https'],
 };
 
 const outputFile = './swagger.json';
